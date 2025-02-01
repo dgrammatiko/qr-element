@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Element</title>
+  <script type=module src="./src/index.mjs"></script>
+  <style>
+    :root {
+      color-scheme: dark light;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rendering a QR code</h1>
+
+  <h2>just pass the string to the input attribute</h2>
+  <qr-element input="https://dgrammatiko.dev"></qr-element>
+
+  <hr>
+
+  <h2>change the size passing the px to the width attribute</h2>
+  <qr-element input="https://dgrammatiko.dev" width=444px></qr-element>
+
+  <hr>
+
+  <h2> Custom colors: using the host background-color and the ::part(canvas)</h2>
+  <style>
+  qr-element.blue {
+    background-color: gold;
+  }
+  qr-element.blue::part(canvas) {
+    --canvas-fill: blue;
+  }
+  </style>
+  <qr-element class=blue input="https://dgrammatiko.dev"></qr-element>
+</body>
+</html>
