@@ -1,0 +1,14 @@
+{
+  "name": "qr-element",
+  "version": "1.0.0",
+  "description": "Creates a QR image",
+  "main": "src/index.mjs",
+  "scripts": {
+    "dev": "npx vite"
+  },
+  "dependencies": {
+    "headless-qr": "^1.0.3"
+  },
+  "license": "MIT",
+  "author": "Dimitris Grammatikogiannis"
+}
