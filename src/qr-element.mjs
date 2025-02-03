@@ -1,17 +1,5 @@
 import { qr } from 'headless-qr';
 
-const css = `:host {
-  display: inline-block;
-  background-color: #fff;
-  padding-block: .1rem;
-  padding-inline: .1rem;
-}
-::part(canvas), canvas {
-  --canvas-fill: #000;
-  aspect-ratio: 1;
-  image-rendering: pixelated;
-}`;
-
 export class QrElement extends HTMLElement {
   static get observedAttributes() { return ['input', 'width']; }
 
@@ -20,11 +8,15 @@ export class QrElement extends HTMLElement {
 
   set input(value) {
     this._input = value;
-    this.setAttribute('input', value);
+    this.setAttribute('input', this.input);
+    this._renderCanvas();
   }
   set width(value) {
-    this._width = value;
-    this.setAttribute('width', value);
+    this._width = Number.parseInt(value, 10);
+    this.setAttribute('width', `${this.width}px`);
+    this.setAttribute('height', `${this.width}px`);
+    this.setWidth();
+    this._renderCanvas();
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -32,13 +24,13 @@ export class QrElement extends HTMLElement {
     switch (name) {
       case 'input':
         this._input = newValue;
-        this._renderCanvas();
         break;
       case 'width':
-        this._width = newValue;
+        this._width = Number.parseInt(newValue, 10);
         this.setWidth();
         break;
     }
+    this._renderCanvas();
   }
 
   _upgradeProperty(prop) {
@@ -53,10 +45,10 @@ export class QrElement extends HTMLElement {
     super();
     this.attachShadow({ mode: 'open' });
     const style = document.createElement('style');
-    this._width = '400px';
+    this._width = 300;
     this.canvas = document.createElement('canvas');
     this.canvas.setAttribute('part', 'canvas')
-    style.textContent = css;
+    style.textContent = `:host { display: block; background-color: #fff } ::part(canvas), canvas { --canvas-fill: #000; aspect-ratio: 1; image-rendering: pixelated }`;
     this.shadowRoot.appendChild(style);
     this.shadowRoot.appendChild(this.canvas);
   }
@@ -69,8 +61,9 @@ export class QrElement extends HTMLElement {
   }
 
   setWidth() {
-    this.canvas.style.width = this.width;
-    this.style.width = `calc(${this.width} + .2rem)`;
+    this.canvas.style.width = `${this.width}px`;
+    this.style.width = `${this.width}px`;
+    this.style.height = `${this.width}px`;
   }
 
   _renderCanvas() {

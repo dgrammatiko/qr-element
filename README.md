@@ -4,8 +4,8 @@ Using https://github.com/Rich-Harris/headless-qr
 
 
 ## Attributes/properties
-- input<string>: the string that the QR Code will be created for
-- width<string>: the width (also height, qr codes are square) in px, ie `150px`
+- `input<string>`: the string that the QR Code will be created for
+- `width<string>`: the width (also height, qr codes are square) in px, ie `150px`
 
 ## Styling
 
