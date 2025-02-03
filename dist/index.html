@@ -6,10 +6,6 @@
   <title>QR Element</title>
   <meta name="description" content="A simple QR Code Web Component">
   <style>
-    :root {
-      color-scheme: dark light;
-    }
-
     /** Prevent CLS */
     qr-element {
       display: block;
@@ -26,8 +22,31 @@
         }
       }
     }
+
+    /** basic page styling */
+    :root {
+      color-scheme: dark light;
+    }
+
+    a {
+      color: lightblue;
+    }
+
+    body {
+      margin-inline-start: auto;
+      margin-inline-end: auto;
+      max-width: 30rem;
+    }
+
+    ul {
+      padding: 1rem;
+      background-color: #333;
+      list-style-type: none;
+      display: flex;
+      gap: 2rem;
+    }
   </style>
-  <script type="module" crossorigin src="/assets/index-CLtdk9yj.js"></script>
+  <script type="module" crossorigin src="./index.js"></script>
 </head>
 <body>
   <h1>Rendering a QR code</h1>
@@ -44,5 +63,14 @@
 
   <h2> Custom colors: using the host background-color and the ::part(canvas)</h2>
   <qr-element class="blue" input="https://dgrammatiko.dev"></qr-element>
+
+  <hr>
+
+  <ul>
+    <li><a href="https://github.com/dgrammatiko/qr-element">Github repo</a></li>
+    <li><a href="https://github.com/dgrammatiko/qr-element">NPM package</a></li>
+    <li><a href="https://dgrammatiko.dev">by dGrammatiko</a></li>
+  </ul>
+
 </body>
 </html>

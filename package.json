@@ -4,7 +4,8 @@
   "description": "Creates a QR image",
   "main": "src/index.mjs",
   "scripts": {
-    "dev": "npx vite"
+    "dev": "npx vite",
+    "build": "npx vite build --config ./vite.config.js"
   },
   "dependencies": {
     "headless-qr": "^1.0.3"
