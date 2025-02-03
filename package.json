@@ -1,8 +1,9 @@
 {
-  "name": "qr-element",
+  "name": "@dgrammatiko/qr-element",
   "version": "1.0.0",
   "description": "Creates a QR image",
   "main": "src/index.mjs",
+  "type": "module",
   "scripts": {
     "dev": "npx vite",
     "build": "npx vite build --config ./vite.config.js"
@@ -11,5 +12,18 @@
     "headless-qr": "^1.0.3"
   },
   "license": "MIT",
-  "author": "Dimitris Grammatikogiannis"
+  "author": "Dimitris Grammatikogiannis",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dgrammatiko/qr-element.git"
+  },
+  "keywords": [
+    "QR-code",
+    "Web-component",
+    "vanilla",
+    "javascript"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
